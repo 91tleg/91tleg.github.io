@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Press_Start_2P";
+  src: url(./assets/Press_Start_2P/PressStart2P-Regular.ttf);
+}
+
+body {
+  margin: 0;
+  background-image: url("./assets/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Press_Start_2P", sans-serif;
+  line-height: 1.8;
+}
