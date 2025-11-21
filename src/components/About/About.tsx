@@ -12,10 +12,9 @@ export default function About() {
       </div>
       <div className={styles["desc"]}>
         I'm passionate about embedded systems, C/C++ programming, and firmware development.
-        I have experience working with microcontrollers, device drivers, peripheral programming, 
-        RTOS-based systems, and performance optimization for resource-constrained systems.
-        I love solving challenging engineering problems, exploring new technologies, and applying
-        low-level programming skills to real-world problems.
+        I loves tinkering with cars just as much as I love programming. When I'm not building
+        or debugging embedded projects, you'll probably find me under the hood of my car,
+        figuring out how things work (and occasionally making them work better).
       </div>
     </div>
   );
