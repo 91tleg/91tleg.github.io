@@ -1,0 +1,53 @@
+---
+const badges = [
+  { text: 'Made with Astro', href: 'https://astro.build', bg: '#8a2fb5', fg: '#fff' },
+  { text: 'Hosted on GitHub Pages', href: 'https://pages.github.com', bg: '#24292f', fg: '#fff' },
+  { text: 'Best viewed at 800x600', bg: '#000080', fg: '#ff0' },
+  { text: 'GitHub', href: 'https://github.com/91tleg', bg: '#1b6b2f', fg: '#fff' },
+  { text: 'LinkedIn', href: 'https://linkedin.com/in/91tleg', bg: '#0a66c2', fg: '#fff' },
+];
+---
+
+<ul class="badges">
+  {
+    badges.map((b) => (
+      <li>
+        {b.href ? (
+          <a class="badge" href={b.href} target="_blank" rel="noreferrer" style={`--bg: ${b.bg}; --fg: ${b.fg}`}>
+            {b.text}
+          </a>
+        ) : (
+          <span class="badge" style={`--bg: ${b.bg}; --fg: ${b.fg}`}>{b.text}</span>
+        )}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .badge {
+    display: grid;
+    place-items: center;
+    width: 88px;
+    height: 31px;
+    padding: 0 4px;
+    background: var(--bg);
+    color: var(--fg);
+    border: 1px solid #000;
+    box-shadow: inset 1px 1px rgba(255, 255, 255, 0.45), inset -1px -1px rgba(0, 0, 0, 0.45);
+    font: 700 9px/1.1 Arial, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  a.badge:hover { filter: brightness(1.25); }
+</style>
