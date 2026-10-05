@@ -50,3 +50,26 @@ ul { padding-left: 1.2em; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; }
 }
+
+/* Retro touches */
+html {
+  scrollbar-color: var(--magenta) #000030;
+}
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track { background: #000030; border-left: 1px solid var(--cyan); }
+::-webkit-scrollbar-thumb {
+  background: var(--magenta);
+  border: 2px outset #f9f;
+}
+::selection { background: var(--yellow); color: #000; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+hr.rainbow {
+  border: 0;
+  height: 4px;
+  margin: 0 0 16px;
+  background: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f);
+}

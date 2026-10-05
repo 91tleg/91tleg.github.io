@@ -6,6 +6,8 @@ import Box from '../components/Box.astro';
 import Project from '../components/Project.astro';
 import TechButton from '../components/TechButton.astro';
 import VisitorCounter from '../components/VisitorCounter.astro';
+import ConstructionTape from '../components/ConstructionTape.astro';
+import Badges from '../components/Badges.astro';
 import { techGroups } from '../data/tech';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -18,11 +20,11 @@ const updated = new Date().toLocaleDateString('en-US', {
 
 <Base
   title="Max Chou's Page"
-  description="Max Chou, software engineer. Full-stack web, Rust backends and systems programming."
+  description="Max Chou, software engineer. See my projects and get in touch."
 >
-  <main class="page">
+  <main class="page" id="top">
     <h1>Max Chou's Page</h1>
-    <p class="tag">~ software, systems &amp; cars ~</p>
+    <p class="tag">~ web, backend &amp; firmware ~</p>
 
     <Marquee text="★ Welcome to my page ★ Software engineer ★ Check out my projects below ★ Thanks for visiting ★" />
 
@@ -30,23 +32,26 @@ const updated = new Date().toLocaleDateString('en-US', {
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#stack">Tech stack</a>
+      <a href="#blog">Blog</a>
       <a href="https://github.com/91tleg" target="_blank" rel="noreferrer">GitHub</a>
       <a href="https://linkedin.com/in/91tleg" target="_blank" rel="noreferrer">LinkedIn</a>
     </nav>
 
     <Box title="About me" id="about">
-      <p>Hello, my name is Max Chou. I'm a software engineer and a recent computer science graduate of Bellevue College.</p>
       <p>
-        I build across the stack: Rust backends, TypeScript frontends, and low-level code in C and
-        C++ when a project calls for it. I love tinkering with cars just as much as I love
-        programming. When I'm not building or debugging, you'll probably find me under the hood of my
-        car, figuring out how things work (and occasionally making them work better).
+        Hello, I'm Max Chou, a software engineer and recent computer science graduate of Bellevue
+        College. I build across the stack, from Rust backends to C firmware, and when I'm not coding
+        I'm under the hood of my car.
       </p>
     </Box>
+
+    <hr class="rainbow" />
 
     <Box title="My projects" id="projects" isNew>
       {projects.map((project) => <Project project={project} />)}
     </Box>
+
+    <hr class="rainbow" />
 
     <Box title="Tech stack" id="stack">
       {
@@ -60,6 +65,16 @@ const updated = new Date().toLocaleDateString('en-US', {
         ))
       }
     </Box>
+
+    <hr class="rainbow" />
+
+    <Box title="Blog" id="blog">
+      <ConstructionTape />
+    </Box>
+
+    <hr class="rainbow" />
+
+    <Badges />
 
     <VisitorCounter />
 

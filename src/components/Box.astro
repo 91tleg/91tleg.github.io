@@ -3,14 +3,16 @@ interface Props {
   title: string;
   id?: string;
   isNew?: boolean;
+  backToTop?: boolean;
 }
 
-const { title, id, isNew = false } = Astro.props;
+const { title, id, isNew = false, backToTop = true } = Astro.props;
 ---
 
 <section class="box" id={id}>
   <h2>{title}{isNew && <span class="new"> NEW!</span>}</h2>
   <slot />
+  {backToTop && <a class="top" href="#top">&uarr; back to top</a>}
 </section>
 
 <style>
@@ -26,6 +28,12 @@ const { title, id, isNew = false } = Astro.props;
     margin-bottom: 6px;
     text-decoration: underline wavy var(--magenta);
     text-underline-offset: 4px;
+  }
+  .top {
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    font-size: 0.9rem;
   }
   .new {
     color: var(--yellow);

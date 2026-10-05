@@ -1,0 +1,25 @@
+<div class="tape" role="img" aria-label="Under construction">
+  <span>&#9888; Under construction &#9888;</span>
+</div>
+
+<style>
+  .tape {
+    margin: 8px 0;
+    padding: 3px;
+    background: repeating-linear-gradient(45deg, #ff0 0 12px, #000 12px 24px);
+    background-size: 34px 34px;
+    animation: slide 1.2s linear infinite;
+  }
+  span {
+    display: block;
+    padding: 4px 10px;
+    background: #000;
+    color: var(--yellow);
+    font-family: var(--pixel);
+    font-size: 1.4rem;
+    text-align: center;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  @keyframes slide { to { background-position: 34px 0; } }
+</style>
