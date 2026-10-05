@@ -1,0 +1,116 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Marquee from '../components/Marquee.astro';
+import Box from '../components/Box.astro';
+import Project from '../components/Project.astro';
+import TechButton from '../components/TechButton.astro';
+import VisitorCounter from '../components/VisitorCounter.astro';
+import { techGroups } from '../data/tech';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const updated = new Date().toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Base
+  title="Max Chou's Page"
+  description="Max Chou, software engineer. Full-stack web, Rust backends and systems programming."
+>
+  <main class="page">
+    <h1>Max Chou's Page</h1>
+    <p class="tag">~ software, systems &amp; cars ~</p>
+
+    <Marquee text="★ Welcome to my page ★ Software engineer ★ Check out my projects below ★ Thanks for visiting ★" />
+
+    <nav class="links" aria-label="Site links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#stack">Tech stack</a>
+      <a href="https://github.com/91tleg" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://linkedin.com/in/91tleg" target="_blank" rel="noreferrer">LinkedIn</a>
+    </nav>
+
+    <Box title="About me" id="about">
+      <p>Hello, my name is Max Chou. I'm a software engineer and a recent computer science graduate of Bellevue College.</p>
+      <p>
+        I build across the stack: Rust backends, TypeScript frontends, and low-level code in C and
+        C++ when a project calls for it. I love tinkering with cars just as much as I love
+        programming. When I'm not building or debugging, you'll probably find me under the hood of my
+        car, figuring out how things work (and occasionally making them work better).
+      </p>
+    </Box>
+
+    <Box title="My projects" id="projects" isNew>
+      {projects.map((project) => <Project project={project} />)}
+    </Box>
+
+    <Box title="Tech stack" id="stack">
+      {
+        techGroups.map((group) => (
+          <div class="group">
+            <h3>{group.title}</h3>
+            <ul class="buttons">
+              {group.items.map((t) => <TechButton {...t} />)}
+            </ul>
+          </div>
+        ))
+      }
+    </Box>
+
+    <VisitorCounter />
+
+    <footer>Last updated {updated}</footer>
+  </main>
+</Base>
+
+<style>
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 8vw, 3.6rem);
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 6px;
+    background: linear-gradient(90deg, #f0f, #0ff, #ff0, #f0f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 6s linear infinite;
+  }
+  .tag {
+    text-align: center;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px 18px;
+    margin: 14px 0 16px;
+    font-weight: 700;
+  }
+  .group + .group { margin-top: 12px; }
+  .group h3 {
+    color: var(--cyan);
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0;
+  }
+  footer {
+    margin-top: 18px;
+    text-align: center;
+    font-family: var(--pixel);
+    font-size: 1.4rem;
+    color: var(--green);
+  }
+</style>
