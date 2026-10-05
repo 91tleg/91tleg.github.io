@@ -5,6 +5,7 @@ import Marquee from '../components/Marquee.astro';
 import Box from '../components/Box.astro';
 import Project from '../components/Project.astro';
 import TechButton from '../components/TechButton.astro';
+import VisitorCounter from '../components/VisitorCounter.astro';
 import { tech } from '../data/tech';
 
 const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
@@ -52,6 +53,8 @@ const updated = new Date().toLocaleDateString('en-US', {
         {tech.map((t) => <TechButton name={t.name} icon={t.icon} color={t.color} />)}
       </ul>
     </Box>
+
+    <VisitorCounter />
 
     <footer>Last updated {updated}</footer>
   </main>

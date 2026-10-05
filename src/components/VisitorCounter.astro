@@ -1,0 +1,55 @@
+---
+const endpoint = import.meta.env.PUBLIC_COUNTER_URL;
+---
+
+{
+  endpoint && (
+    <p class="counter" data-endpoint={endpoint} hidden>
+      You are visitor number <span class="digits" data-digits>000000</span>
+    </p>
+  )
+}
+
+<style>
+  .counter {
+    text-align: center;
+    font-family: var(--pixel);
+    font-size: 1.5rem;
+    color: var(--green);
+    margin-top: 18px;
+  }
+  .digits {
+    display: inline-block;
+    background: #000;
+    border: 2px inset #888;
+    padding: 0 8px;
+    letter-spacing: 0.15em;
+  }
+</style>
+
+<script>
+  const el = document.querySelector<HTMLElement>('[data-endpoint]');
+  const digits = el?.querySelector<HTMLElement>('[data-digits]');
+
+  if (el && digits) {
+    const endpoint = el.dataset.endpoint;
+    let counted = false;
+    try {
+      counted = localStorage.getItem('visited') === '1';
+    } catch {}
+
+    // Count each browser once; later visits only read the total.
+    fetch(`${endpoint}/${counted ? 'count' : 'hit'}`, { method: counted ? 'GET' : 'POST' })
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.status)))
+      .then(({ count }: { count: number }) => {
+        digits.textContent = String(count).padStart(6, '0');
+        el.hidden = false;
+        if (!counted) {
+          try {
+            localStorage.setItem('visited', '1');
+          } catch {}
+        }
+      })
+      .catch(() => {});
+  }
+</script>

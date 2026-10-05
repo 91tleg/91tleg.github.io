@@ -22,6 +22,8 @@ jobs:
       - uses: withastro/action@v3
         with:
           node-version: 22
+        env:
+          PUBLIC_COUNTER_URL: ${{ vars.PUBLIC_COUNTER_URL }}
 
   deploy:
     needs: build
