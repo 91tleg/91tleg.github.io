@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Marquee from '../components/Marquee.astro';
+import Box from '../components/Box.astro';
+import ConstructionTape from '../components/ConstructionTape.astro';
+---
+
+<Base title="404 - Max Chou's Page" description="Page not found.">
+  <main class="page" id="top">
+    <h1>404</h1>
+    <p class="tag">~ page not found ~</p>
+
+    <Marquee text="★ Error 404 ★ This page has moved, been deleted, or never existed ★ Please try the home page ★" />
+
+    <Box title="Oops!" backToTop={false}>
+      <ConstructionTape />
+      <p>
+        We couldn't find the page you were looking for. It may have moved, or the link may be wrong.
+      </p>
+      <p class="home"><a href="/">&larr; Back to the home page</a></p>
+    </Box>
+  </main>
+</Base>
+
+<style>
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 18vw, 7rem);
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 6px;
+    background: linear-gradient(90deg, #f0f, #0ff, #ff0, #f0f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hue 6s linear infinite;
+  }
+  .tag {
+    text-align: center;
+    color: var(--cyan);
+    margin-bottom: 14px;
+  }
+  .home {
+    margin-top: 10px;
+    font-weight: 700;
+  }
+  :global(.box) { margin-top: 16px; }
+</style>
