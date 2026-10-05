@@ -4,11 +4,24 @@ import type { Tech } from '../data/tech';
 
 type Props = Tech;
 
-const { name, icon, svgPath, color } = Astro.props;
+const { name, icon, svgPath, color, cutOff } = Astro.props;
+const LOGO_SIZE = 22;
+const logoWidth = icon && !cutOff ? Math.round((LOGO_SIZE * icon.width) / icon.height) : LOGO_SIZE;
 ---
 
 <li class="btn" style={`--bg: ${color}`}>
-  {icon && <Image src={icon} alt="" width={22} height={22} class="logo" />}
+  {
+    icon && (
+      <Image
+        src={icon}
+        alt=""
+        width={logoWidth}
+        height={LOGO_SIZE}
+        class:list={['logo', { 'cut-off': cutOff }]}
+        style={cutOff ? `object-position: ${cutOff}` : undefined}
+      />
+    )
+  }
   {
     svgPath && (
       <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
@@ -26,6 +39,7 @@ const { name, icon, svgPath, color } = Astro.props;
     gap: 6px;
     min-width: 88px;
     height: 31px;
+    overflow: hidden;
     padding: 0 8px;
     background: var(--bg);
     border: 1px solid #000;
@@ -35,9 +49,19 @@ const { name, icon, svgPath, color } = Astro.props;
     list-style: none;
   }
   .logo {
-    width: 22px;
-    height: 22px;
+    width: auto;
+    max-width: none;
     object-fit: contain;
     flex: none;
+  }
+  svg.logo {
+    width: 22px;
+    height: 22px;
+  }
+  /* Square slot like the other logos; the rest of the logo is cut off. */
+  .logo.cut-off {
+    width: 22px;
+    height: 22px;
+    object-fit: cover;
   }
 </style>
