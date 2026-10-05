@@ -26,3 +26,5 @@ dist-ssr
 # Astro
 .astro
 .wrangler
+.env
+.env.*
