@@ -1,17 +1,21 @@
 ---
 import { Image } from 'astro:assets';
+import type { Tech } from '../data/tech';
 
-interface Props {
-  name: string;
-  icon: ImageMetadata;
-  color: string;
-}
+type Props = Tech;
 
-const { name, icon, color } = Astro.props;
+const { name, icon, svgPath, color } = Astro.props;
 ---
 
 <li class="btn" style={`--bg: ${color}`}>
-  <Image src={icon} alt="" width={22} height={22} class="logo" />
+  {icon && <Image src={icon} alt="" width={22} height={22} class="logo" />}
+  {
+    svgPath && (
+      <svg class="logo" viewBox="0 0 24 24" aria-hidden="true">
+        <path d={svgPath} fill="currentColor" />
+      </svg>
+    )
+  }
   <span>{name}</span>
 </li>
 
