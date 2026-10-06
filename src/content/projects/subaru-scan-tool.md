@@ -4,4 +4,4 @@ order: 5
 github: https://github.com/91tleg/open-ssm
 ---
 
-Built with ESP-IDF and FreeRTOS, this tool talks directly to Subaru vehicles over the Subaru Select Monitor (SSM) protocol. It communicates with the ECU to retrieve and display over 30 real-time parameters, including sensor readings, switch states and vehicle diagnostics.
+An ESP32-based diagnostic tool for older Subarus using the SSM protocol. Reads 30+ live parameters, switch states, and trouble codes, with an ECU simulator for testing without a car.
