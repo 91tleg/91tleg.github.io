@@ -39,6 +39,15 @@ export interface TechGroup {
 
 export const techGroups: TechGroup[] = [
   {
+    title: 'Embedded',
+    items: [
+      { name: 'Zephyr', icon: zephyr, color: '#5b2a86', cutOff: '100% 50%' },
+      { name: 'FreeRTOS', icon: freertos, color: '#a8101c' },
+      { name: 'ESP-IDF', svgPath: siEspressif.path, color: '#8a1a1a' },
+      { name: 'STM32Cube', svgPath: siStmicroelectronics.path, color: '#0a4d8c' },
+    ],
+  },
+  {
     title: 'Languages',
     items: [
       { name: 'C', svgPath: siC.path, color: '#0b5ea8' },
@@ -49,11 +58,11 @@ export const techGroups: TechGroup[] = [
     ],
   },
   {
-    title: 'Web',
+    title: 'Build & test',
     items: [
-      { name: 'Astro', svgPath: siAstro.path, color: '#8a2fb5' },
-      { name: 'Svelte', svgPath: siSvelte.path, color: '#c4310a' },
-      { name: 'React', svgPath: siReact.path, color: '#1f6f86' },
+      { name: 'CMake', svgPath: siCmake.path, color: '#1f6f3f' },
+      { name: 'GTest', icon: gtest, color: '#b36a00' },
+      { name: 'Unity', icon: unity, color: '#444' },
     ],
   },
   {
@@ -65,20 +74,11 @@ export const techGroups: TechGroup[] = [
     ],
   },
   {
-    title: 'Embedded',
+    title: 'Web',
     items: [
-      { name: 'Zephyr', icon: zephyr, color: '#5b2a86', cutOff: '100% 50%' },
-      { name: 'FreeRTOS', icon: freertos, color: '#a8101c' },
-      { name: 'ESP-IDF', svgPath: siEspressif.path, color: '#8a1a1a' },
-      { name: 'STM32Cube', svgPath: siStmicroelectronics.path, color: '#0a4d8c' },
-    ],
-  },
-  {
-    title: 'Build & test',
-    items: [
-      { name: 'CMake', svgPath: siCmake.path, color: '#1f6f3f' },
-      { name: 'GTest', icon: gtest, color: '#b36a00' },
-      { name: 'Unity', icon: unity, color: '#444' },
+      { name: 'Astro', svgPath: siAstro.path, color: '#8a2fb5' },
+      { name: 'Svelte', svgPath: siSvelte.path, color: '#c4310a' },
+      { name: 'React', svgPath: siReact.path, color: '#1f6f86' },
     ],
   },
 ];
