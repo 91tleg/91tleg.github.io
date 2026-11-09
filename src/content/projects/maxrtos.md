@@ -1,7 +1,7 @@
 ---
 name: maxRTOS
-order: 2
+order: 1
 github: https://github.com/91tleg/maxRTOS
 ---
 
-A from-scratch RTOS written in C, built to contain task crashes. Hardware-enforced memory isolation and fixed time slots protect each partition, with mutexes, semaphores, and message queues for synchronization and communication.
+A statically configured, ARINC 653-style RTOS for ARM Cortex-M7 with time and spatial partitioning. Each partition gets a fixed time slot and an MPU-enforced memory sandbox, talks through ports, and is restarted or halted by a health monitor if anything goes wrong. Perfect for planes, drones, or time machines.
