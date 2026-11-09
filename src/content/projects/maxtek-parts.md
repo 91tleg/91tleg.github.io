@@ -1,7 +1,7 @@
 ---
 name: MaxTek Parts
-order: 3
+order: 5
 site: https://maxtekparts.com
 ---
 
-Subaru and JDM parts I design and sell through my own storefront. Astro, Svelte, and Rust on AWS Lambda power the storefront; a React dashboard with an Axum backend handles operations.
+My online store for CAD-designed, CNC-machined Subaru and JDM parts. Astro and Svelte up front, Rust on AWS Lambda behind it.

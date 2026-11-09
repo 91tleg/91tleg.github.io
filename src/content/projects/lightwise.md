@@ -1,7 +1,7 @@
 ---
 name: LightWise
-order: 1
+order: 4
 github: https://github.com/91tleg/LightWise
 ---
 
-Streetlights that turn on when needed and report their own faults. C++ firmware on ESP32 nodes sends diagnostics over LoRaWAN to a Python backend on AWS Lambda and a React dashboard.
+Streetlights that diagnose themselves. Each one is an ESP32 node that catches its own faults, degrades gracefully, and reports over LoRaWAN to AWS, so crews only get sent out for real problems.
